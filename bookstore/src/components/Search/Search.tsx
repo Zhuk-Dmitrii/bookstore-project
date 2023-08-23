@@ -1,0 +1,34 @@
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import './search.scss'
+
+export function Search(): JSX.Element {
+   const [searchValue, setSearchValue] = useState<string>('')
+   const navigate = useNavigate()
+
+   function handleInputSearch (event: React.ChangeEvent<HTMLInputElement>) {
+      setSearchValue(event.target.value)
+   }
+
+   function handleSubmitSearch (event: React.FormEvent<HTMLFormElement>) {
+      event.preventDefault()
+      if (searchValue.trim() != '') {
+         navigate(`/books/search/${searchValue}/1`)
+      }
+      setSearchValue('')
+   }
+
+   return (
+      <div className="container-fluid">
+         <form className="d-flex flex-grow-1" onSubmit={handleSubmitSearch}>
+            <input 
+               className="search-input form-control me-2"
+               type="search"
+               placeholder="Search"
+               value={searchValue}
+               onChange={handleInputSearch}
+            />
+         </form>
+      </div>
+   )
+}
