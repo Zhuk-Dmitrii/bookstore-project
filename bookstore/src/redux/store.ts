@@ -1,12 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux'
-import { newBooksReducer } from './newBooksSlice'
-import { searchBooksReducer } from './searchBooksSlice'
+import { booksReducer } from './booksSlice'
 
 export const store = configureStore({
    reducer: {
-      newBooks: newBooksReducer,
-      searchBooks: searchBooksReducer,
+      books: booksReducer,
    }
 })
 

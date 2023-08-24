@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { RootState, useAppDispatch } from '../../redux/store'
-import { fetchSearchBooks } from '../../redux/searchBooksSlice'
+import { fetchSearchBooks } from '../../redux/booksSlice'
 import { BookContainer } from '../../components/BookContainer/BookContainer'
 import { BookCard } from '../../components/BookCard/BookCard'
 import { Pagination } from '../../components/Pagination/Pagination'
@@ -11,7 +11,7 @@ import { DataBooks } from '../../types/interfaces'
 
 export function SearchList (): JSX.Element {
    const { searchValue, pageNumber } = useParams<{searchValue?: string, pageNumber?: string}>()
-   const { data, pagesCounter, loading, error } = useSelector((state: RootState) => state.searchBooks)
+   const { data, pagesCounter, loading, error } = useSelector((state: RootState) => state.books)
    const dispatch = useAppDispatch()
 
    useEffect(() => {

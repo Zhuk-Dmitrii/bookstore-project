@@ -1,17 +1,17 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { fetchNewBooks } from '../../redux/newBooksSlice'
+import { fetchNewBooks } from '../../redux/booksSlice'
 import { RootState, useAppDispatch } from '../../redux/store'
-import { DataBooks } from '../../types/interfaces'
 import { BookContainer } from '../../components/BookContainer/BookContainer'
 import { BookCard } from '../../components/BookCard/BookCard'
 import { Pagination } from '../../components/Pagination/Pagination'
 import { Spinner } from '../../components/Spinner/Spinner'
+import { DataBooks } from '../../types/interfaces'
 
 
 export function NewBooks(): JSX.Element {
-   const { data, pagesCounter, booksPerPage, loading, error } = useSelector((state: RootState) => state.newBooks)
+   const { data, pagesCounter, booksPerPage, loading, error } = useSelector((state: RootState) => state.books)
    const { pageNumber } = useParams<string>()
    const sliceStart: number = (Number(pageNumber) - 1) * booksPerPage
    const sliceEnd: number = sliceStart + booksPerPage
