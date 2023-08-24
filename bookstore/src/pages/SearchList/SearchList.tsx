@@ -7,6 +7,7 @@ import { BookContainer } from '../../components/BookContainer/BookContainer'
 import { BookCard } from '../../components/BookCard/BookCard'
 import { Pagination } from '../../components/Pagination/Pagination'
 import { Spinner } from '../../components/Spinner/Spinner'
+import { Back } from '../../components/Back/Back'
 import { DataBooks } from '../../types/interfaces'
 
 export function SearchList (): JSX.Element {
@@ -19,11 +20,11 @@ export function SearchList (): JSX.Element {
    }, [dispatch, searchValue, pageNumber])
 
    function renderSearchBooks () {
-      if (data) {
+      if (data.books) {
          return (
-            data.map((book: DataBooks) => {
+            data.books.map((book: DataBooks) => {
                return <BookCard key={book.isbn13} data={book} />
-            })
+            }) as JSX.Element[]
          )
       }
    }
@@ -42,9 +43,12 @@ export function SearchList (): JSX.Element {
 
    return (
       <>
-         <h1 className="mt-4 mb-5">
+         <h1 className="mt-4 mb-2">
             '{searchValue}' search results
          </h1>
+         <p className="text-body-tertiary">Found {data.total} books</p>
+
+         <Back className='mb-5'/>
 
          <BookContainer>
             {renderSearchBooks()}

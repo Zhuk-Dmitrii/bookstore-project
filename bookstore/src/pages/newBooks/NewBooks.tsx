@@ -22,11 +22,11 @@ export function NewBooks(): JSX.Element {
    }, [dispatch, pageNumber])
 
    function renderNewBooks() {
-      if (data) {
+      if (data.books) {
          return (
-            data.slice(sliceStart, sliceEnd).map((book: DataBooks) => (
+            data.books.slice(sliceStart, sliceEnd).map((book: DataBooks) => (
                <BookCard key={book.image} data={book} />
-            ))
+            )) as JSX.Element[]
          )
       }
    }

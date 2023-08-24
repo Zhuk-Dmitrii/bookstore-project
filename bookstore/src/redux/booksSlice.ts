@@ -20,7 +20,7 @@ export const fetchSearchBooks = createAsyncThunk<
 export const booksSlice = createSlice({
    name: 'books',
    initialState: {
-      data: [],
+      data: {},
       pagesCounter: 0,
       booksPerPage: 10,
       loading: false,
@@ -36,10 +36,7 @@ export const booksSlice = createSlice({
 
       builder.addCase(fetchNewBooks.fulfilled, (state, action) => {
          state.loading = false
-         
-         if (Number(state.data.length) == Number(action.payload.total)) return
-
-         state.data = action.payload.books
+         state.data = action.payload
          state.pagesCounter = Math.ceil(Number(action.payload.total) / state.booksPerPage)
       })
 
@@ -55,10 +52,7 @@ export const booksSlice = createSlice({
 
       builder.addCase(fetchSearchBooks.fulfilled, (state, action) => {
          state.loading = false
-
-         if (Number(state.data.length) == Number(action.payload.total)) return
-
-         state.data = action.payload.books
+         state.data = action.payload
          state.pagesCounter = Math.ceil(Number(action.payload.total) / state.booksPerPage)
       })
 

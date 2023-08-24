@@ -19,7 +19,7 @@ export interface ResponseBooks {
 }
 
 export interface initialStateBooks {
-   data: DataBooks[],
+   data: ResponseBooks,
    pagesCounter: number,
    booksPerPage: number,
    loading: boolean,
