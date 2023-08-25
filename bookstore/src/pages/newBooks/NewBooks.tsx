@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { fetchNewBooks } from '../../redux/booksSlice'
 import { RootState, useAppDispatch } from '../../redux/store'
+import { Title } from '../../components/Title/Title'
 import { BookContainer } from '../../components/BookContainer/BookContainer'
 import { BookCard } from '../../components/BookCard/BookCard'
 import { Pagination } from '../../components/Pagination/Pagination'
@@ -39,13 +40,17 @@ export function NewBooks(): JSX.Element {
 
    if (error) {
       return (
-         <h1 className="text-uppercase fw-bold mt-4 mb-5">{error}</h1>
+         <Title className="text-uppercase fw-bold mt-4 mb-5">
+            {error}
+         </Title>
       )
    }
 
    return (
       <>
-         <h1 className="text-uppercase fw-bold mt-4 mb-5">New Releases Books</h1>
+         <Title className="text-uppercase fw-bold mt-4 mb-5">
+            New Releases Books
+         </Title>
          <BookContainer>
             {renderNewBooks()}
          </BookContainer>

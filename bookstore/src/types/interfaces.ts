@@ -1,5 +1,11 @@
 export interface PropsChildren {
    children: React.ReactNode
+   className?: string
+}
+
+export interface PropsTitle {
+   children: React.ReactNode
+   className?: string
 }
 
 export interface DataBooks {
