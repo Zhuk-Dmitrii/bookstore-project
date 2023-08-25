@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './tabs.scss'
 
-export function Tabs ({className}: {className?: string}): JSX.Element {
+export function Tabs({ className }: { className?: string }): JSX.Element {
    const [selectedTab, setSelectedTab] = useState('description')
 
    function handleClickTab(tab: string): void {
@@ -35,7 +35,7 @@ export function Tabs ({className}: {className?: string}): JSX.Element {
 
          <div className="tabs__content">
             <div className={`tab__content ${selectedTab === 'description' ? 'active' : ''}`}>
-               1111
+               An application running in the cloud can benefit from incredible efficiencies, but they come with unique security threats too. A DevOps team&#039;s highest priority is understanding those risks and hardening the system against them.Securing DevOps teaches you the essential techniques to secure your c...
             </div>
             <div className={`tab__content ${selectedTab === 'author' ? 'active' : ''}`}>
                2222
