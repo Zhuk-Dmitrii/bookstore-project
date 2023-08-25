@@ -40,9 +40,9 @@ export const booksSlice = createSlice({
          state.pagesCounter = Math.ceil(Number(action.payload.total) / state.booksPerPage)
       })
 
-      builder.addCase(fetchNewBooks.rejected, (state) => {
+      builder.addCase(fetchNewBooks.rejected, (state, action) => {
          state.loading = false
-         state.error = 'Ошибка!!!'
+         state.error = action.error.message as string
       })
       
 // ____________________________Search books____________________________
