@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
-import { DataBooks } from '../../types/interfaces'
+import { DataBook } from '../../types/interfaces'
 import './bookCard.scss'
 
-export function BookCard ({ data }: { data: DataBooks }): JSX.Element {
+export function BookCard ({ data }: { data: DataBook }): JSX.Element {
    return (
       <Link to={`/single-book/${data.isbn13}`} className="book-card card">
          <img src={data.image} />

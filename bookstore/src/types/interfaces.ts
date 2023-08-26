@@ -8,7 +8,7 @@ export interface PropsTitle {
    className?: string
 }
 
-export interface ResponseBook {
+export interface ResponseSingleBook {
    error?: string,
    title: string,
    subtitle?: string,
@@ -24,23 +24,10 @@ export interface ResponseBook {
    price: string,
    image: string,
    url?: string,
-   pdf?: {
-      "Chapter 1"?: string,
-      "Chapter 2"?: string,
-      "Chapter 3"?: string,
-      "Chapter 4"?: string,
-      "Chapter 5"?: string,
-   }
+   pdf?: object
 }
 
-export interface ResponseBooks {
-   error?: string,
-   total?: string,
-   page?: string,
-   books: DataBooks[]
-}
-
-export interface DataBooks {
+export interface DataBook {
    title: string,
    subtitle?: string,
    isbn13?: string,
@@ -49,8 +36,15 @@ export interface DataBooks {
    url?: string
 }
 
+export interface ResponseBooks {
+   error?: string,
+   total?: string,
+   page?: string,
+   books: DataBook[]
+}
+
 export interface initialStateBook {
-   data: ResponseBook,
+   data: ResponseSingleBook,
    loading: boolean,
    error: null | string
 }

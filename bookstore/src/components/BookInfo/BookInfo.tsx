@@ -1,9 +1,9 @@
 import { Rating } from '../Rating/Rating'
 import { Button } from '../Button/Button'
-import { ResponseBook } from '../../types/interfaces'
+import { ResponseSingleBook } from '../../types/interfaces'
 import './bookInfo.scss'
 
-export function BookInfo ({className, data}: {className?: string, data: ResponseBook}): JSX.Element {
+export function BookInfo ({className, data}: {className?: string, data: ResponseSingleBook}): JSX.Element {
    return (
       <>
          <div className={`book-info ${className}`}>

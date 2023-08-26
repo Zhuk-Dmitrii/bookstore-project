@@ -8,7 +8,7 @@ import { BookContainer } from '../../components/BookContainer/BookContainer'
 import { BookCard } from '../../components/BookCard/BookCard'
 import { Pagination } from '../../components/Pagination/Pagination'
 import { Spinner } from '../../components/Spinner/Spinner'
-import { DataBooks } from '../../types/interfaces'
+import { DataBook } from '../../types/interfaces'
 
 
 export function NewBooks(): JSX.Element {
@@ -25,7 +25,7 @@ export function NewBooks(): JSX.Element {
    function renderNewBooks() {
       if (data.books) {
          return (
-            data.books.slice(sliceStart, sliceEnd).map((book: DataBooks) => (
+            data.books.slice(sliceStart, sliceEnd).map((book: DataBook) => (
                <BookCard key={book.image} data={book} />
             )) as JSX.Element[]
          )

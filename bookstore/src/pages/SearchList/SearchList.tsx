@@ -8,7 +8,7 @@ import { BookContainer } from '../../components/BookContainer/BookContainer'
 import { BookCard } from '../../components/BookCard/BookCard'
 import { Pagination } from '../../components/Pagination/Pagination'
 import { Spinner } from '../../components/Spinner/Spinner'
-import { DataBooks } from '../../types/interfaces'
+import { DataBook } from '../../types/interfaces'
 
 export function SearchList(): JSX.Element {
    const { searchValue, pageNumber } = useParams<{ searchValue?: string, pageNumber?: string }>()
@@ -22,7 +22,7 @@ export function SearchList(): JSX.Element {
    function renderSearchBooks() {
       if (data.books) {
          return (
-            data.books.map((book: DataBooks) => {
+            data.books.map((book: DataBook) => {
                return <BookCard key={book.isbn13} data={book} />
             }) as JSX.Element[]
          )

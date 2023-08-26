@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { ResponseBook } from '../../types/interfaces'
+import { ResponseSingleBook } from '../../types/interfaces'
 import './tabs.scss'
 
-export function Tabs({ className, data }: { className?: string, data: ResponseBook }): JSX.Element {
+export function Tabs({ className, data }: { className?: string, data: ResponseSingleBook }): JSX.Element {
    const [selectedTab, setSelectedTab] = useState('description')
 
    function handleClickTab(tab: string): void {

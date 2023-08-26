@@ -1,6 +1,6 @@
 import { client } from '../utils/client'
 import { newBooksEndpoints, searchBooksEndpoints, bookEndpoints } from '../api'
-import { ResponseBooks, ResponseBook } from '../types/interfaces'
+import { ResponseBooks, ResponseSingleBook } from '../types/interfaces'
 
 export const requestNewBooks = async (): Promise<ResponseBooks> => {
    const { data } = await client.get<ResponseBooks>(newBooksEndpoints)
@@ -14,8 +14,8 @@ export const requestSearchBooks = async (search?: string, page?: string): Promis
    return response.data as ResponseBooks
 }
 
-export const requestBookByIsbn13 = async (isbn13: string): Promise<ResponseBook> => {
-   const { data } = await client.get<ResponseBook>(bookEndpoints + '/' + isbn13)
+export const requestBookByIsbn13 = async (isbn13: string): Promise<ResponseSingleBook> => {
+   const { data } = await client.get<ResponseSingleBook>(bookEndpoints + '/' + isbn13)
 
-   return data as ResponseBook
+   return data as ResponseSingleBook
 }

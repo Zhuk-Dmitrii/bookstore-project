@@ -1,4 +1,4 @@
-import starActive from '../../images/star-activ.png'
+import starActive from '../../images/star-active.png'
 import starDisabled from '../../images/star-disabled.png'
 import './rating.scss'
 
