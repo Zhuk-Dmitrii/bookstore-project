@@ -7,8 +7,8 @@ export function Back ({ className }: { className?: string }): JSX.Element {
    }
 
    return (
-      <div className={`back ${className}`}>
-         <img src={back} onClick={handleClickImage}/>
+      <div className={`back ${className}`}  onClick={handleClickImage}>
+         <img src={back}/>
       </div>
    )
 }

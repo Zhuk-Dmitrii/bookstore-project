@@ -1,15 +1,16 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet} from 'react-router-dom'
 import { Header } from '../Header/Header'
 import { Main } from '../Main/Main'
 import { Footer } from '../Footer/Footer'
 import { Search } from '../Search/Search'
+import { Logo } from '../Logo/Logo'
 import './layout.scss'
 
 export function Layout (): JSX.Element {
    return (
       <div className="layout">
          <Header>
-            <h1>BOOKSTORE</h1>
+            <Logo />
             <Search />
          </Header>
 

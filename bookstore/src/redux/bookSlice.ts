@@ -1,12 +1,20 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAction, PayloadAction } from '@reduxjs/toolkit'
+import { put } from 'redux-saga/effects'
 import { requestBookByIsbn13 } from '../services/books'
 import { ResponseBook, initialStateBook } from '../types/interfaces'
 
-export const fetchBook = createAsyncThunk<ResponseBook, string>('book/fetchBook', async (isbn13: string) => {
-   const data: ResponseBook = await requestBookByIsbn13(isbn13)
+export function* getBookSaga (action: PayloadAction<string>) {
+   yield put(setLoading(true))
 
-   return data
-})
+   try {
+      const payload: ResponseBook = yield requestBookByIsbn13(action.payload)
+      yield put(getBookSuccess(payload))
+   } catch {
+      yield put(setError())
+   }
+
+   yield put(setLoading(false))
+}
 
 export const bookSlice = createSlice({
    name: 'book',
@@ -16,22 +24,19 @@ export const bookSlice = createSlice({
       error: null,
    } as initialStateBook,
    reducers: {
-   },
-   extraReducers: builder => {
-      builder.addCase(fetchBook.pending, (state) => {
-         state.loading = true
-      })
-
-      builder.addCase(fetchBook.fulfilled, (state, action) => {
-         state.loading = false
+      getBookSuccess: (state, action) => {
          state.data = action.payload
-      })
-
-      builder.addCase(fetchBook.rejected, (state, action) => {
-         state.loading = false
-         state.error = action.error.message as string
-      })
-   }
+      },
+      setLoading: (state, action) => {
+         state.loading = action.payload
+      },
+      setError: (state) => {
+         state.error = 'Ошибка!!!'
+      }
+   },
 })
 
+export const GET_BOOK: string = 'book/getBook'
+export const getBook = createAction<string>(GET_BOOK)
+export const { getBookSuccess, setLoading, setError } = bookSlice.actions
 export const bookReducer = bookSlice.reducer

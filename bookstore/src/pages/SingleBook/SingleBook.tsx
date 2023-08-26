@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { fetchBook } from '../../redux/bookSlice'
+import { getBook } from '../../redux/bookSlice'
 import { useAppDispatch, RootState } from '../../redux/store'
 import { Spinner } from '../../components/Spinner/Spinner'
 import { Back } from '../../components/Back/Back'
@@ -17,7 +17,7 @@ export function SingleBook(): JSX.Element {
 
    useEffect(() => {
       if (isbn13) {
-         dispatch(fetchBook(isbn13))
+         dispatch(getBook(isbn13))
       }
    }, [dispatch, isbn13])
 
