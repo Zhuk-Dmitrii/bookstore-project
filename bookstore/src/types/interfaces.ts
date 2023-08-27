@@ -1,11 +1,20 @@
 export interface PropsChildren {
-   children: React.ReactNode
-   className?: string
+   children: React.ReactNode,
 }
 
 export interface PropsTitle {
-   children: React.ReactNode
-   className?: string
+   children: React.ReactNode,
+   className: string
+}
+
+export interface PropsInputForm {
+   className?: string,
+   children?: React.ReactNode,
+   id?: string,
+   type: string,
+   placeholder?: string,
+   value: string,
+   onchange: (value: string) => void
 }
 
 export interface ResponseSingleBook {

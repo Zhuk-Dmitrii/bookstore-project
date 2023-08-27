@@ -1,0 +1,49 @@
+.sign-in {
+   width: 500px;
+   display: flex;
+   flex-direction: column;
+   border: 1px solid #E7E7E7;
+
+   .sign-in__form {
+      width: 100%;
+      padding: 0 15px 0 15px;
+
+      .sign-in__email {
+         width: 100%;
+         display: flex;
+         flex-direction: column;
+         margin-top: 30px;
+      }
+
+      .sign-in__password {
+         width: 100%;
+         display: flex;
+         flex-direction: column;
+         margin-top: 15px;
+      }
+
+      & input {
+         border: 1px solid #E7E7E7;
+         width: 100%;
+         height: 50px;
+         margin-top: 10px;
+         padding-left: 15px;
+      }
+
+      & input::placeholder {
+         color: #A8A8A8;
+      }
+
+      & a {
+         text-decoration: none;
+         font-size: 14px;
+         line-height: 32px;
+         font-weight: 400;
+         color: #313037;
+
+         &:hover {
+            text-decoration: underline;
+         }
+      }
+   }
+}

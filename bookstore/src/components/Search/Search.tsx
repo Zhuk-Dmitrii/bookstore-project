@@ -6,11 +6,11 @@ export function Search(): JSX.Element {
    const [searchValue, setSearchValue] = useState<string>('')
    const navigate = useNavigate()
 
-   function handleInputSearch (event: React.ChangeEvent<HTMLInputElement>) {
+   function handleInputSearch(event: React.ChangeEvent<HTMLInputElement>) {
       setSearchValue(event.target.value)
    }
 
-   function handleSubmitSearch (event: React.FormEvent<HTMLFormElement>) {
+   function handleSubmitSearch(event: React.FormEvent<HTMLFormElement>) {
       event.preventDefault()
       if (searchValue.trim() != '') {
          navigate(`/books/search/${searchValue}/1`)
@@ -19,16 +19,14 @@ export function Search(): JSX.Element {
    }
 
    return (
-      <div className="container-fluid">
-         <form className="d-flex flex-grow-1" onSubmit={handleSubmitSearch}>
-            <input 
-               className="search-input form-control me-2"
-               type="search"
-               placeholder="Search"
-               value={searchValue}
-               onChange={handleInputSearch}
-            />
-         </form>
-      </div>
+      <form className="d-flex w-50" onSubmit={handleSubmitSearch}>
+         <input
+            className="search-input form-control me-2"
+            type="search"
+            placeholder="Search"
+            value={searchValue}
+            onChange={handleInputSearch}
+         />
+      </form>
    )
 }
