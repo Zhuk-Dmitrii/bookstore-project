@@ -4,6 +4,7 @@ import createSagaMiddleware from 'redux-saga'
 import { takeEvery } from 'redux-saga/effects'
 import { booksReducer } from './booksSlice'
 import { bookReducer, GET_BOOK, getBookSaga } from './bookSlice'
+// import { favoritesReducer } from './favoritesSlice'
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -15,6 +16,7 @@ export const store = configureStore({
    reducer: {
       books: booksReducer,
       book: bookReducer,
+      // favorites: favoritesReducer,
    },
    middleware: (getDefaultMiddleware) => {
       return getDefaultMiddleware().concat(sagaMiddleware)

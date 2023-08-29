@@ -4,7 +4,7 @@ export interface PropsChildren {
 
 export interface PropsTitle {
    children: React.ReactNode,
-   className: string
+   className?: string
 }
 
 export interface PropsInputForm {
@@ -15,6 +15,16 @@ export interface PropsInputForm {
    placeholder?: string,
    value: string,
    onchange: (value: string) => void
+}
+
+export interface PropsFavoriteBtn {
+   className: string,
+   data: ResponseSingleBook,
+}
+
+export interface PropsBookCard {
+   children?: React.ReactNode,
+   data: DataBook
 }
 
 export interface ResponseSingleBook {
@@ -52,14 +62,15 @@ export interface ResponseBooks {
    books: DataBook[]
 }
 
-export interface initialStateBook {
+export interface InitialStateBook {
    data: ResponseSingleBook,
    loading: boolean,
    error: null | string
 }
 
-export interface initialStateBooks {
+export interface InitialStateBooks {
    data: ResponseBooks,
+   dataFavorites: ResponseSingleBook[],
    pagesCounter: number,
    booksPerPage: number,
    loading: boolean,

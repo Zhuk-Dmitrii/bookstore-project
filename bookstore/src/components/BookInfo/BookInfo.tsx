@@ -1,20 +1,25 @@
 import { Rating } from '../Rating/Rating'
 import { Button } from '../Button/Button'
+import { FavoritesControl } from '../FavoritesControl/FavoritesControl'
 import { ResponseSingleBook } from '../../types/interfaces'
 import './bookInfo.scss'
 
-export function BookInfo ({className, data}: {className?: string, data: ResponseSingleBook}): JSX.Element {
+export function BookInfo({ className, data }: { className?: string, data: ResponseSingleBook }): JSX.Element {
    return (
       <>
          <div className={`book-info ${className}`}>
             <div className="book-info__image">
                <img src={data.image} alt="упс" />
+               <FavoritesControl
+                  className="book-info__favorite book-favorite"
+                  data={data}
+               />
             </div>
 
             <div className="book-info__content">
                <div className="book-info__title">
                   <p className="book-info__title_price">{data.price}</p>
-                  <Rating rating={data.rating}/>
+                  <Rating rating={data.rating} />
                </div>
 
                <div className="book-info__description">

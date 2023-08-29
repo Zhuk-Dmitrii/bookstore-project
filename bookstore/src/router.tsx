@@ -3,6 +3,7 @@ import { Layout } from './components/Layout/Layout'
 import { NewBooks } from './pages/NewBooks/NewBooks'
 import { SearchList } from './pages/SearchList/SearchList'
 import { SingleBook } from './pages/SingleBook/SingleBook'
+import { Favorites } from './pages/Favorites/Favorites'
 import { Auth } from './pages/Auth/Auth'
 import { SignIn } from './pages/SignIn/SignIn'
 import { SignUp } from './pages/SignUp/SignUp'
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
          {
             path: '/single-book/:isbn13',
             element: <SingleBook />
+         },
+         {
+            path: '/favorites',
+            element: <Favorites />
          },
          {
             path: '/auth',

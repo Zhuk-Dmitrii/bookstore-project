@@ -10,7 +10,6 @@ import { Pagination } from '../../components/Pagination/Pagination'
 import { Spinner } from '../../components/Spinner/Spinner'
 import { DataBook } from '../../types/interfaces'
 
-
 export function NewBooks(): JSX.Element {
    const { data, pagesCounter, booksPerPage, loading, error } = useSelector((state: RootState) => state.books)
    const { pageNumber } = useParams<string>()
@@ -26,7 +25,7 @@ export function NewBooks(): JSX.Element {
       if (data.books) {
          return (
             data.books.slice(sliceStart, sliceEnd).map((book: DataBook) => (
-               <BookCard key={book.image} data={book} />
+               <BookCard data={book} key={book.isbn13} />
             )) as JSX.Element[]
          )
       }

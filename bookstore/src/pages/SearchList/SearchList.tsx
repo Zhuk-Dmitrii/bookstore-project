@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { RootState, useAppDispatch } from '../../redux/store'
 import { fetchSearchBooks } from '../../redux/booksSlice'
 import { Title } from '../../components/Title/Title'
@@ -22,8 +22,12 @@ export function SearchList(): JSX.Element {
    function renderSearchBooks() {
       if (data.books) {
          return (
-            data.books.map((book: DataBook) => {
-               return <BookCard key={book.isbn13} data={book} />
+            data.books.map((book: DataBook, index: number) => {
+               return (
+                  <Link to={`/single-book/${book.isbn13}`} key={index} className="text-decoration-none">
+                     <BookCard key={book.isbn13} data={book} />
+                  </Link>
+               )
             }) as JSX.Element[]
          )
       }

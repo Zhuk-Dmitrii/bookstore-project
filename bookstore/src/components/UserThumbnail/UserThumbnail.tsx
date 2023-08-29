@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import userThumbnail from '../../images/user.png'
+import userThumbnail from '../../images/user-thumbnail.png'
 
 export function UserThumbnail (): JSX.Element {
    return (

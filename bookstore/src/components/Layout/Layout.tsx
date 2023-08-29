@@ -6,6 +6,7 @@ import { Search } from '../Search/Search'
 import { Logo } from '../Logo/Logo'
 import { HeaderNavIcons } from '../HeaderNavIcons/HeaderNavIcons'
 import { UserThumbnail } from '../UserThumbnail/UserThumbnail'
+import { FavoritesThumbnail } from '../FavoritesThumbnail/FavoritesThumbnail'
 import './layout.scss'
 
 export function Layout(): JSX.Element {
@@ -15,6 +16,7 @@ export function Layout(): JSX.Element {
             <Logo />
             <Search />
             <HeaderNavIcons>
+               <FavoritesThumbnail />
                <UserThumbnail />
             </HeaderNavIcons>
          </Header>

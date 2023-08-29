@@ -1,4 +1,9 @@
-.book-card:hover {
+.book-card {
+   position: relative;
+}
+
+.book-card__image:hover {
    cursor: pointer;
    background-color: #FEE9E2;
+   text-decoration: none;
 }

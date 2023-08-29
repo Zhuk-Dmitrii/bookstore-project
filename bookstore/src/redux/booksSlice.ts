@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { requestNewBooks, requestSearchBooks } from '../services/books'
-import { initialStateBooks, ResponseBooks } from '../types/interfaces'
+import { getDataFromLocalStorage } from '../helpers/getDataFromLocalStorage'
+import { setDataInLocalStorage } from '../helpers/setDataInLocalStorage'
+import { InitialStateBooks, ResponseBooks } from '../types/interfaces'
 
 export const fetchNewBooks = createAsyncThunk<ResponseBooks>('newBooks/fetchNewBooks', async () => {
    const response = await requestNewBooks()
@@ -21,12 +23,22 @@ export const booksSlice = createSlice({
    name: 'books',
    initialState: {
       data: {},
+      dataFavorites: getDataFromLocalStorage('favorites'),
       pagesCounter: 0,
       booksPerPage: 10,
       loading: false,
       error: null,
-   } as initialStateBooks,
+   } as InitialStateBooks,
    reducers: {
+      addBookFavorites: (state, action) => {
+         state.dataFavorites.push(action.payload)
+         setDataInLocalStorage('favorites', state.dataFavorites)
+      },
+      removeBookFavorites: (state, action) => {
+         const indexBook = state.dataFavorites.findIndex(book => book.isbn13 === action.payload.isbn13)
+         state.dataFavorites.splice(indexBook, 1)
+         setDataInLocalStorage('favorites', state.dataFavorites)
+      }
    },
    extraReducers: builder => {
 // ______________________________New books_____________________________
@@ -63,4 +75,5 @@ export const booksSlice = createSlice({
    }
 })
 
+export const { addBookFavorites, removeBookFavorites } = booksSlice.actions
 export const booksReducer = booksSlice.reducer

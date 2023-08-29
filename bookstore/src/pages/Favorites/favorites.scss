@@ -1,0 +1,15 @@
+.favorites-control {
+   position: absolute;
+   width: 40px;
+   height: 40px;
+   background-color: #313037;
+   right: 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   & :hover {
+      cursor: pointer;
+   }
+
+}
