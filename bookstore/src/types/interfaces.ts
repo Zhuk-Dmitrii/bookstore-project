@@ -27,6 +27,24 @@ export interface PropsBookCard {
    data: DataBook
 }
 
+export interface PropsButton {
+   className?: string,
+   value: string,
+   onClick?: React.MouseEventHandler<HTMLButtonElement>
+}
+
+export interface PropsCounter {
+   className?: string,
+   data: ResponseSingleBook,
+   decrement: () => void,
+   increment: () => void
+}
+
+export interface PropsCounterValue {
+   className: string,
+   value: string | number,
+}
+
 export interface ResponseSingleBook {
    error?: string,
    title: string,
@@ -71,6 +89,7 @@ export interface InitialStateBook {
 export interface InitialStateBooks {
    data: ResponseBooks,
    dataFavorites: ResponseSingleBook[],
+   dataCart: ResponseSingleBook[],
    pagesCounter: number,
    booksPerPage: number,
    loading: boolean,

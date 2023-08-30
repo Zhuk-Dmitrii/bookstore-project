@@ -1,5 +1,11 @@
-export function Button ({className, value}: {className: string, value: string}): JSX.Element {
+import { PropsButton } from '../../types/interfaces'
+
+export function Button({ className, value, onClick }: PropsButton): JSX.Element {
+   function handleClick(event: React.MouseEvent<HTMLButtonElement>): void {
+      onClick && onClick(event)
+   }
+
    return (
-      <button className={className}>{value}</button>
+      <button className={className} onClick={handleClick}>{value}</button>
    )
 }

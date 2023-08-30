@@ -7,6 +7,7 @@ import { Logo } from '../Logo/Logo'
 import { HeaderNavIcons } from '../HeaderNavIcons/HeaderNavIcons'
 import { UserThumbnail } from '../UserThumbnail/UserThumbnail'
 import { FavoritesThumbnail } from '../FavoritesThumbnail/FavoritesThumbnail'
+import { CartThumbnail } from '../CartThumbnail/CartThumbnail'
 import './layout.scss'
 
 export function Layout(): JSX.Element {
@@ -17,6 +18,7 @@ export function Layout(): JSX.Element {
             <Search />
             <HeaderNavIcons>
                <FavoritesThumbnail />
+               <CartThumbnail />
                <UserThumbnail />
             </HeaderNavIcons>
          </Header>

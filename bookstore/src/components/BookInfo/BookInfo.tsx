@@ -1,10 +1,31 @@
+import { useSelector } from 'react-redux'
+import { incrementToCart, decrementFromCart } from '../../redux/booksSlice'
+import { RootState, useAppDispatch } from '../../redux/store'
 import { Rating } from '../Rating/Rating'
 import { Button } from '../Button/Button'
 import { FavoritesControl } from '../FavoritesControl/FavoritesControl'
+import { Counter } from '../Counter/Counter'
 import { ResponseSingleBook } from '../../types/interfaces'
 import './bookInfo.scss'
 
 export function BookInfo({ className, data }: { className?: string, data: ResponseSingleBook }): JSX.Element {
+   const { dataCart } = useSelector((state: RootState) => state.books)
+   const dispatch = useAppDispatch()
+
+   function handleClickIncrement(): void {
+      dispatch(incrementToCart(data))
+   }
+
+   function handleClickDecrement(): void {
+      dispatch(decrementFromCart(data))
+   }
+
+   function renderCartControl(): JSX.Element {
+      return dataCart.some((book: ResponseSingleBook) => book.isbn13 === data.isbn13) ?
+         (<Counter className="mt-5" decrement={handleClickDecrement} increment={handleClickIncrement} data={data}/>) :
+         (<Button className="btn btn-primary mt-5" value="ADD TO CART" onClick={handleClickIncrement} />)
+   }
+
    return (
       <>
          <div className={`book-info ${className}`}>
@@ -48,7 +69,13 @@ export function BookInfo({ className, data }: { className?: string, data: Respon
                   </details>
                </div>
 
-               <Button className="btn btn-primary mt-5" value="ADD TO CART" />
+               {/* <Button className="btn btn-primary mt-5" value="ADD TO CART" onClick={handleClickIncrement} />
+               <Counter 
+                  className="mt-5"
+                  decrement={handleClickDecrement}
+                  increment={handleClickIncrement}
+               /> */}
+               {renderCartControl()}
                {data.pdf && <a href="" className="book-info__preview-link">Preview book</a>}
             </div>
          </div>

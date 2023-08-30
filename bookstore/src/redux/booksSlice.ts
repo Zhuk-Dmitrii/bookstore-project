@@ -24,6 +24,7 @@ export const booksSlice = createSlice({
    initialState: {
       data: {},
       dataFavorites: getDataFromLocalStorage('favorites'),
+      dataCart: getDataFromLocalStorage('cart'),
       pagesCounter: 0,
       booksPerPage: 10,
       loading: false,
@@ -38,6 +39,19 @@ export const booksSlice = createSlice({
          const indexBook = state.dataFavorites.findIndex(book => book.isbn13 === action.payload.isbn13)
          state.dataFavorites.splice(indexBook, 1)
          setDataInLocalStorage('favorites', state.dataFavorites)
+      },
+      incrementToCart: (state, action) => {
+         state.dataCart.push(action.payload)
+         setDataInLocalStorage('cart', state.dataCart)
+      },
+      decrementFromCart: (state, action) => {
+         const bookIndexFromEnd = state.dataCart.findLastIndex(book => book.isbn13 === action.payload.isbn13)
+         state.dataCart.splice(bookIndexFromEnd, 1)
+         setDataInLocalStorage('cart', state.dataCart)
+      },
+      deleteFromCart: (state, action) => {
+         state.dataCart = state.dataCart.filter(book => book.isbn13 !== action.payload.isbn13)
+         setDataInLocalStorage('cart', state.dataCart)
       }
    },
    extraReducers: builder => {
@@ -75,5 +89,5 @@ export const booksSlice = createSlice({
    }
 })
 
-export const { addBookFavorites, removeBookFavorites } = booksSlice.actions
+export const { addBookFavorites, removeBookFavorites, incrementToCart, decrementFromCart, deleteFromCart } = booksSlice.actions
 export const booksReducer = booksSlice.reducer

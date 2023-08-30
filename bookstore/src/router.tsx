@@ -4,6 +4,7 @@ import { NewBooks } from './pages/NewBooks/NewBooks'
 import { SearchList } from './pages/SearchList/SearchList'
 import { SingleBook } from './pages/SingleBook/SingleBook'
 import { Favorites } from './pages/Favorites/Favorites'
+import { Cart } from './pages/Cart/Cart'
 import { Auth } from './pages/Auth/Auth'
 import { SignIn } from './pages/SignIn/SignIn'
 import { SignUp } from './pages/SignUp/SignUp'
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
          {
             path: '/favorites',
             element: <Favorites />
+         },
+         {
+            path: '/cart',
+            element: <Cart />
          },
          {
             path: '/auth',
