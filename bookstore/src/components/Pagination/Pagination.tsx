@@ -1,95 +1,77 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { Button } from '../Button/Button'
 import { PaginationBooks } from '../../types/interfaces'
+import './pagination.scss'
 
-export function Pagination ({pageNumber, pagesCounter, baseUrl, routeParameter = ''}: PaginationBooks): JSX.Element {
-   function renderPaginationItems() {
-      const pagination: JSX.Element[] = []
-      const maxButtons: number = 5
-      const activePage: number = pageNumber
-      let startPage: number = Math.max(activePage - 2, 1)
-      let endPage: number = Math.min(activePage + 2, pagesCounter)
+export function Pagination({ className = '', pageNumber, pagesCounter, baseUrl, routeParameter = '' }: PaginationBooks): JSX.Element | undefined {
+   const navigate = useNavigate()
 
+   function buildPaginationScheme() {
+      const pageBeforePrev: number = pageNumber - 2
+      const prevPageNumber: number = pageNumber - 1
+      const nextPageNumber: number = pageNumber + 1
+      const pageAfterNext: number = pageNumber + 2
+      const scheme: number[] = [1, pageBeforePrev, prevPageNumber, pageNumber, nextPageNumber, pageAfterNext, pagesCounter]
+      const filteredScheme: number[] = scheme.filter(item => item > 0 && item <= pagesCounter)
+      const set: Set<number> = new Set(filteredScheme)
+      const result: Array<number | string> = Array.from(set)
 
-      const ellipsis = (key: string): JSX.Element => <li className="page-item disabled" key={key}><span className="page-link">...</span></li>
-      const switchButton = (name: string, active: boolean): JSX.Element => {
-         return (
-            <li className="page-item" key={name}>
-               <NavLink to={`${baseUrl}${routeParameter}${name == 'next' ? activePage + 1 : activePage - 1}`} className={active ? 'page-link' : 'page-link disabled'}>
-                  {name}
-               </NavLink>
-            </li>
-         )
-      }
-      const navItem = (page: number): JSX.Element => {
-         return (
-            <li className="page-item" key={page}>
-               <NavLink to={`${baseUrl}${routeParameter}${page}`} className={({ isActive }) => isActive ? 'page-link active' : 'page-link'}>
-                  {page}
-               </NavLink>
-            </li>
-         )
-      }
+      if (Number(result[0]) + 1 !== result[1]) result.splice(1, 0, '...')
+      if (Number(result.at(-2)) + 1 !== result.at(-1)) result.splice(result.length - 1, 0, '...')
 
-      if (pagesCounter == 1) return
-
-      if (activePage == 1) {
-         pagination.push(switchButton('previous', false))
-      } else {
-         pagination.push(switchButton('previous', true))
-      }
-
-      if (pagesCounter <= maxButtons) {
-         for (let pageNumber = 1; pageNumber <= pagesCounter; pageNumber++) {
-            pagination.push(navItem(pageNumber))
-         }
-
-         if (activePage < pagesCounter) {
-            pagination.push(switchButton('next', true))
-         } else if (activePage == pagesCounter) {
-            pagination.push(switchButton('next', false))
-         }
-         
-         return pagination
-      }
-
-      if (activePage <= 4) {
-         endPage = maxButtons
-      } else if (activePage >= pagesCounter - 3) {
-         startPage = pagesCounter - maxButtons 
-      }
-
-      if (startPage > 1) {
-         pagination.push(navItem(1))
-         if (startPage > 2) {
-            pagination.push(ellipsis(`ellipsis-start`));
-         }
-      }
-
-      for (let pageNumber = startPage; pageNumber <= endPage; pageNumber++) {
-         pagination.push(navItem(pageNumber))
-      }
-
-      if (endPage < pagesCounter) {
-         if (endPage < pagesCounter - 1) {
-            pagination.push(ellipsis(`ellipsis-end`));
-         }
-         pagination.push(navItem(pagesCounter))
-      }
-
-      if (activePage < pagesCounter) {
-         pagination.push(switchButton('next', true))
-      } else if (activePage == pagesCounter) {
-         pagination.push(switchButton('next', false))
-      }
-
-      return pagination
+      return result
    }
 
-   return (
-      <nav>
-         <ul className="pagination flex-wrap">
-            {renderPaginationItems()}
-         </ul>
-      </nav>
-   )
+   function renderPagination(): JSX.Element[] {
+      const paginationScheme = buildPaginationScheme()
+
+      return paginationScheme.map((pageNumber, index) => {
+         if (String(pageNumber) == '...') {
+            return (
+               <li className="page-item disabled" key={index}>
+                  <span className="page-link">...</span>
+               </li>
+            )
+         }
+
+         return (
+            <li className="page-item" key={index}>
+               <NavLink to={`${baseUrl}${routeParameter}${pageNumber}`} className={({ isActive }) => isActive ? 'page-link active' : 'page-link'}>
+                  {pageNumber}
+               </NavLink>
+            </li>
+         )
+      })
+   }
+
+   function handleClickPrevButton() {
+      navigate(`${baseUrl}${routeParameter}${pageNumber - 1}`)
+   }
+
+   function handleClickNextButton() {
+      navigate(`${baseUrl}${routeParameter}${pageNumber + 1}`)
+   }
+
+   if (pagesCounter > 1) {
+      return (
+         <nav className={`pagination ${className}`}>
+            <Button
+               className={`btn btn-primary px-3 mx-3 ${pageNumber == 1 ? 'disabled' : ''}`}
+               value='Prev'
+               type='button'
+               onClick={handleClickPrevButton}
+            />
+            <ul className="pagination flex-wrap">
+               {renderPagination()}
+            </ul>
+            <Button
+               className={`btn btn-primary px-3 mx-3 ${pageNumber == pagesCounter ? 'disabled' : ''}`}
+               value='Next'
+               type='button'
+               onClick={handleClickNextButton}
+            />
+         </nav>
+      )
+   }
 }
+

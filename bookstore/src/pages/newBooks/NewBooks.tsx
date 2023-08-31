@@ -8,6 +8,7 @@ import { BookContainer } from '../../components/BookContainer/BookContainer'
 import { BookCard } from '../../components/BookCard/BookCard'
 import { Pagination } from '../../components/Pagination/Pagination'
 import { Spinner } from '../../components/Spinner/Spinner'
+import { Subscription } from '../../components/Subscription/Subscription'
 import { DataBook } from '../../types/interfaces'
 
 export function NewBooks(): JSX.Element {
@@ -55,10 +56,13 @@ export function NewBooks(): JSX.Element {
          </BookContainer>
 
          <Pagination
+            className="mt-5 mb-5"
             pageNumber={Number(pageNumber)}
             pagesCounter={pagesCounter}
             baseUrl='/new-books/page/'
          />
+
+         <Subscription className="mt-2 mb-5"/>
       </>
    )
 }

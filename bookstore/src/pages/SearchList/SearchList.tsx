@@ -58,6 +58,7 @@ export function SearchList(): JSX.Element {
          </BookContainer>
 
          <Pagination
+            className="mt-5 mb-5"
             pageNumber={Number(pageNumber)}
             pagesCounter={pagesCounter}
             baseUrl='/books/search/'

@@ -98,6 +98,7 @@ export interface InitialStateBooks {
 }
 
 export interface PaginationBooks {
+   className?: string,
    pageNumber: number,
    pagesCounter: number,
    baseUrl: string,
