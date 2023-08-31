@@ -68,13 +68,6 @@ export function BookInfo({ className, data }: { className?: string, data: Respon
                      </div>
                   </details>
                </div>
-
-               {/* <Button className="btn btn-primary mt-5" value="ADD TO CART" onClick={handleClickIncrement} />
-               <Counter 
-                  className="mt-5"
-                  decrement={handleClickDecrement}
-                  increment={handleClickIncrement}
-               /> */}
                {renderCartControl()}
                {data.pdf && <a href="" className="book-info__preview-link">Preview book</a>}
             </div>

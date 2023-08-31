@@ -1,0 +1,40 @@
+.total-cost {
+   display: flex;
+   flex-direction: column;
+   width: 250px;
+   margin-left: auto;
+
+   &__item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 10px;
+
+      &_name {
+         color: #A8A8A8;
+         margin: 0;
+      }
+
+      &_value {
+         margin: 0;
+      }
+   }
+
+   & .item-total {
+      margin-top: 10px;
+      margin-bottom: 0;
+
+      .total-cost__item_name {
+         font-size: 40px;
+         font-weight: 700;
+         color: #313037;
+      }
+
+      .total-cost__item_value {
+         font-size: 40px;
+         font-weight: 700;
+         color: #313037;
+      }
+   }
+}

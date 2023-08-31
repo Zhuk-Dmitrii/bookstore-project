@@ -52,10 +52,14 @@ export const booksSlice = createSlice({
       deleteFromCart: (state, action) => {
          state.dataCart = state.dataCart.filter(book => book.isbn13 !== action.payload.isbn13)
          setDataInLocalStorage('cart', state.dataCart)
+      },
+      deleteAllFromCart: (state) => {
+         state.dataCart = []
+         setDataInLocalStorage('cart', state.dataCart)
       }
    },
    extraReducers: builder => {
-// ______________________________New books_____________________________
+      // ______________________________New books_____________________________
       builder.addCase(fetchNewBooks.pending, (state) => {
          state.loading = true
       })
@@ -70,8 +74,8 @@ export const booksSlice = createSlice({
          state.loading = false
          state.error = action.error.message as string
       })
-      
-// ____________________________Search books____________________________
+
+      // ____________________________Search books____________________________
       builder.addCase(fetchSearchBooks.pending, (state) => {
          state.loading = true
       })
@@ -89,5 +93,13 @@ export const booksSlice = createSlice({
    }
 })
 
-export const { addBookFavorites, removeBookFavorites, incrementToCart, decrementFromCart, deleteFromCart } = booksSlice.actions
+export const {
+   addBookFavorites,
+   removeBookFavorites,
+   incrementToCart,
+   decrementFromCart,
+   deleteFromCart,
+   deleteAllFromCart
+} = booksSlice.actions
+
 export const booksReducer = booksSlice.reducer
