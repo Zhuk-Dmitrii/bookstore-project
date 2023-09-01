@@ -21,7 +21,7 @@ export function Search(): JSX.Element {
    return (
       <form className="d-flex w-50" onSubmit={handleSubmitSearch}>
          <input
-            className="search-input form-control me-2"
+            className={`${searchValue ? 'none-bg-img' : ''} search-input form-control me-2`}
             type="search"
             placeholder="Search"
             value={searchValue}

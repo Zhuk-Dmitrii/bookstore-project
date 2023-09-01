@@ -11,19 +11,15 @@ export function FavoritesControl({ className, data}: PropsFavoriteBtn): JSX.Elem
    })
    const dispatch = useAppDispatch()
 
-   function handleClickInput (): void {
-      if (isChecked) {
-         dispatch(removeBookFavorites(data))
-      } else {
-         dispatch(addBookFavorites(data))
-      }
+   function handleCheckbox (): void {
+      isChecked ? dispatch(removeBookFavorites(data)) : dispatch(addBookFavorites(data))
    }
 
    return (
       <div className={className}>
-         <input type="checkbox" className="btn-check" id={data.isbn13} checked={isChecked} onChange={handleClickInput} />
+         <input type="checkbox" className="btn-check" id={data.isbn13} checked={isChecked} onChange={handleCheckbox} />
          <label  htmlFor={data.isbn13}>
-            <img src={isChecked ? favoriteActive : favoriteDisabled} alt="" />
+            <img src={isChecked ? favoriteActive : favoriteDisabled} alt="упс" />
          </label>
       </div>
    )

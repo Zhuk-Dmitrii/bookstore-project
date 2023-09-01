@@ -27,9 +27,7 @@ export function Layout(): JSX.Element {
             <Outlet />
          </Main>
 
-         <Footer>
-            <h1>Footer</h1>
-         </Footer>
+         <Footer />
       </div>
    )
 }

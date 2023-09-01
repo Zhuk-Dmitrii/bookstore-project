@@ -3,7 +3,7 @@ import { put } from 'redux-saga/effects'
 import { requestBookByIsbn13 } from '../services/books'
 import { ResponseSingleBook, InitialStateBook } from '../types/interfaces'
 
-export function* getBookSaga (action: PayloadAction<string>) {
+export function* getBookSaga(action: PayloadAction<string>) {
    yield put(setLoading(true))
 
    try {

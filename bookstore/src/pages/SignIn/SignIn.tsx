@@ -34,10 +34,10 @@ export function SignIn(): JSX.Element {
          <NavAuth />
          <form onSubmit={handleSubmit} className="sign-in__form">
             <InputForm
-               className='sign-in__email'
-               id='email'
-               type='email'
-               placeholder='Your email'
+               className="sign-in__email"
+               id="email"
+               type="email"
+               placeholder="Your email"
                value={email}
                onchange={handleChangeEmail}
             >
@@ -45,10 +45,10 @@ export function SignIn(): JSX.Element {
             </InputForm>
 
             <InputForm
-               className='sign-in__password'
-               id='password'
-               type='password'
-               placeholder='Your password'
+               className="sign-in__password"
+               id="password"
+               type="password"
+               placeholder="Your password"
                value={password}
                onchange={handleChangePassword}
             >

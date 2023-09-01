@@ -24,11 +24,9 @@ export function NewBooks(): JSX.Element {
 
    function renderNewBooks() {
       if (data.books) {
-         return (
-            data.books.slice(sliceStart, sliceEnd).map((book: DataBook) => (
-               <BookCard data={book} key={book.isbn13} />
-            )) as JSX.Element[]
-         )
+         return data.books.slice(sliceStart, sliceEnd).map((book: DataBook) => {
+            return <BookCard data={book} key={book.isbn13} />
+         })
       }
    }
 
@@ -59,10 +57,10 @@ export function NewBooks(): JSX.Element {
             className="mt-5 mb-5"
             pageNumber={Number(pageNumber)}
             pagesCounter={pagesCounter}
-            baseUrl='/new-books/page/'
+            baseUrl="/new-books/page/"
          />
 
-         <Subscription className="mt-2 mb-5"/>
+         <Subscription className="mt-2 mb-5" />
       </>
    )
 }

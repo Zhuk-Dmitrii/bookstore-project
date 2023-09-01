@@ -4,7 +4,7 @@ import { Button } from '../Button/Button'
 import { ResponseSingleBook } from '../../types/interfaces'
 import './totalCost.scss'
 
-export function TotalCost({className}: {className?: string}): JSX.Element {
+export function TotalCost({ className = '' }: { className?: string }): JSX.Element {
    const { dataCart }: { dataCart: ResponseSingleBook[] } = useSelector((state: RootState) => state.books)
 
    function getSumTotal(): number {
@@ -47,7 +47,7 @@ export function TotalCost({className}: {className?: string}): JSX.Element {
             <p className="total-cost__item_value">${getTotalCost()}</p>
          </div>
 
-         <Button className="btn btn-dark rounded-0 mt-5" type='submit' value="CHECK OUT" />
+         <Button className="btn btn-dark rounded-0 mt-5" type="submit" value="CHECK OUT" />
       </div>
    )
 }

@@ -10,23 +10,23 @@ export function SignUp(): JSX.Element {
    const [password, setPassword] = useState<string>('')
    const [confirmPassword, setConfirmPassword] = useState<string>('')
 
-   function handleChangeUserName (value: string): void {
+   function handleChangeUserName(value: string): void {
       setUserName(value)
    }
 
-   function handleChangeEmail (value: string): void {
+   function handleChangeEmail(value: string): void {
       setEmail(value)
    }
 
-   function handleChangePassword (value: string): void {
+   function handleChangePassword(value: string): void {
       setPassword(value)
    }
 
-   function handleChangeConfirmPassword (value: string): void {
+   function handleChangeConfirmPassword(value: string): void {
       setConfirmPassword(value)
    }
 
-   function handleSubmit (event: React.FormEvent<HTMLFormElement>): void {
+   function handleSubmit(event: React.FormEvent<HTMLFormElement>): void {
       event.preventDefault()
 
       const data = {
@@ -36,7 +36,7 @@ export function SignUp(): JSX.Element {
          confirmPassword
       }
       console.log(data)
-      
+
       setUserName('')
       setEmail('')
       setPassword('')
@@ -47,11 +47,11 @@ export function SignUp(): JSX.Element {
       <div className="sign-up">
          <NavAuth />
          <form onSubmit={handleSubmit} className="sign-up__form">
-         <InputForm
-               className='sign-up__username'
-               id='username'
-               type='text'
-               placeholder='Your name'
+            <InputForm
+               className="sign-up__username"
+               id="username"
+               type="text"
+               placeholder="Your name"
                value={userName}
                onchange={handleChangeUserName}
             >
@@ -59,10 +59,10 @@ export function SignUp(): JSX.Element {
             </InputForm>
 
             <InputForm
-               className='sign-up__email'
-               id='email'
-               type='email'
-               placeholder='Your email'
+               className="sign-up__email"
+               id="email"
+               type="email"
+               placeholder="Your email"
                value={email}
                onchange={handleChangeEmail}
             >
@@ -70,10 +70,10 @@ export function SignUp(): JSX.Element {
             </InputForm>
 
             <InputForm
-               className='sign-up__password'
-               id='password'
-               type='password'
-               placeholder='Your password'
+               className="sign-up__password"
+               id="password"
+               type="password"
+               placeholder="Your password"
                value={password}
                onchange={handleChangePassword}
             >
@@ -81,10 +81,10 @@ export function SignUp(): JSX.Element {
             </InputForm>
 
             <InputForm
-               className='sign-up__confirm-password'
-               id='confirm-password'
-               type='password'
-               placeholder='Confirm your password'
+               className="sign-up__confirm-password"
+               id="confirm-password"
+               type="password"
+               placeholder="Confirm your password"
                value={confirmPassword}
                onchange={handleChangeConfirmPassword}
             >

@@ -37,13 +37,13 @@ export function SingleBook(): JSX.Element {
 
    return (
       <>
-         <Back className='mt-5' />
-         <Title className='mt-3'>
+         <Back className="mt-5" />
+         <Title className="mt-3">
             {data.title}
          </Title>
-         <BookInfo className='mt-3' data={data}/>
-         <Tabs className='mt-5' data={data}/>
-         <Subscription className='mt-5 mb-4' />
+         <BookInfo className="mt-3" data={data} />
+         <Tabs className="mt-5" data={data} />
+         <Subscription className="mt-5 mb-4" />
       </>
    )
 }

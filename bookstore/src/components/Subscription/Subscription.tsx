@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Button } from '../Button/Button'
 import './subscription.scss'
 
-export function Subscription ({className}: {className?: string}): JSX.Element {
+export function Subscription({ className = '' }: { className?: string }): JSX.Element {
    const [email, setEmail] = useState('')
 
    function handleChangeEmail(event: React.ChangeEvent<HTMLInputElement>): void {
@@ -29,8 +29,8 @@ export function Subscription ({className}: {className?: string}): JSX.Element {
                Be the first to know about new IT books, upcoming releases, exclusive offers and more.
             </p>
             <form onSubmit={handleSubmit} className="subscription__form">
-               <input value={email} onChange={handleChangeEmail} type="email" placeholder='Your email'/>
-               <Button className="btn btn-dark rounded-0" type='submit' value="SUBSCRIBE" />
+               <input value={email} onChange={handleChangeEmail} type="email" placeholder="Your email" />
+               <Button className="btn btn-dark rounded-0" type="submit" value="SUBSCRIBE" />
             </form>
          </div>
       </div>

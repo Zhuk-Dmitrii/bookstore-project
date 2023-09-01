@@ -8,10 +8,10 @@ import { BookContainer } from '../../components/BookContainer/BookContainer'
 import { BookCard } from '../../components/BookCard/BookCard'
 import { Pagination } from '../../components/Pagination/Pagination'
 import { Spinner } from '../../components/Spinner/Spinner'
-import { DataBook } from '../../types/interfaces'
+import { DataBook, SearchParams } from '../../types/interfaces'
 
 export function SearchList(): JSX.Element {
-   const { searchValue, pageNumber } = useParams<{ searchValue?: string, pageNumber?: string }>()
+   const { searchValue, pageNumber } = useParams<SearchParams>()
    const { data, pagesCounter, loading, error } = useSelector((state: RootState) => state.books)
    const dispatch = useAppDispatch()
 
@@ -61,7 +61,7 @@ export function SearchList(): JSX.Element {
             className="mt-5 mb-5"
             pageNumber={Number(pageNumber)}
             pagesCounter={pagesCounter}
-            baseUrl='/books/search/'
+            baseUrl="/books/search/"
             routeParameter={searchValue + '/'}
          />
       </>

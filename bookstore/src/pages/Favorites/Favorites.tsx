@@ -8,15 +8,15 @@ import { FavoritesControl } from '../../components/FavoritesControl/FavoritesCon
 import { ResponseSingleBook } from '../../types/interfaces'
 import './favorites.scss'
 
-export function Favorites (): JSX.Element {
+export function Favorites(): JSX.Element {
    const { dataFavorites }: { dataFavorites: ResponseSingleBook[] } = useSelector((state: RootState) => state.books)
 
-   function renderFavorites () {
+   function renderFavorites() {
       if (dataFavorites) {
          return dataFavorites.map((book: ResponseSingleBook) => {
             return (
                <BookCard data={book} key={book.isbn13}>
-                  <FavoritesControl data={book} className='favorites-control'/>
+                  <FavoritesControl data={book} className="favorites-control" />
                </BookCard>
             )
          })
@@ -25,15 +25,13 @@ export function Favorites (): JSX.Element {
 
    return (
       <>
-         <Back className='mt-5' />
+         <Back className="mt-5" />
          <Title className="text-uppercase fw-bold mt-4 mb-5">
             Favorites
          </Title>
          <BookContainer>
             {renderFavorites()}
          </BookContainer>
-
       </>
-
    )
 }

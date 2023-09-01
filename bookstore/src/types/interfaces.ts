@@ -24,7 +24,8 @@ export interface PropsFavoriteBtn {
 
 export interface PropsBookCard {
    children?: React.ReactNode,
-   data: DataBook
+   data: DataBook,
+   className?: string,
 }
 
 export interface PropsButton {
@@ -37,12 +38,10 @@ export interface PropsButton {
 export interface PropsCounter {
    className?: string,
    data: ResponseSingleBook,
-   decrement: () => void,
-   increment: () => void
 }
 
 export interface PropsCounterValue {
-   className: string,
+   className?: string,
    value: string | number,
 }
 
@@ -62,7 +61,10 @@ export interface ResponseSingleBook {
    price: string,
    image: string,
    url?: string,
-   pdf?: object
+   pdf?: {
+      'Free eBook': string,
+      'Chapter 2': string
+   }
 }
 
 export interface DataBook {
@@ -103,4 +105,10 @@ export interface PaginationBooks {
    pagesCounter: number,
    baseUrl: string,
    routeParameter?: string,
+}
+
+export interface SearchParams {
+   searchValue?: string,
+   pageNumber?: string,
+   [key: string]: string | undefined
 }

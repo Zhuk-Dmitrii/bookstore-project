@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { ResponseSingleBook } from '../../types/interfaces'
 import './tabs.scss'
 
-export function Tabs({ className, data }: { className?: string, data: ResponseSingleBook }): JSX.Element {
+export function Tabs({ className = '', data }: { className?: string, data: ResponseSingleBook }): JSX.Element {
    const [selectedTab, setSelectedTab] = useState('description')
 
    function handleClickTab(tab: string): void {
@@ -35,13 +35,13 @@ export function Tabs({ className, data }: { className?: string, data: ResponseSi
          </nav>
 
          <div className="tabs__content">
-            <div className={`tab__content ${selectedTab === 'description' ? 'active' : ''}`}>
+            <div className={`tab__content ${selectedTab === 'description' ? 'active-tab' : ''}`}>
                {data.desc}
             </div>
-            <div className={`tab__content ${selectedTab === 'author' ? 'active' : ''}`}>
+            <div className={`tab__content ${selectedTab === 'author' ? 'active-tab' : ''}`}>
                {data.authors}
             </div>
-            <div className={`tab__content ${selectedTab === 'reviews' ? 'active' : ''}`}>
+            <div className={`tab__content ${selectedTab === 'reviews' ? 'active-tab' : ''}`}>
                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                Veritatis aliquid cupiditate non impedit, numquam eum, sunt ea
                quaerat doloremque reprehenderit repellendus sit, eveniet maxime

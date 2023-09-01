@@ -7,7 +7,7 @@ import { bookReducer, GET_BOOK, getBookSaga } from './bookSlice'
 
 const sagaMiddleware = createSagaMiddleware()
 
-function* sagas () {
+function* sagas() {
    yield takeEvery(GET_BOOK, getBookSaga)
 }
 

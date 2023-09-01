@@ -10,7 +10,7 @@ export const requestNewBooks = async (): Promise<ResponseBooks> => {
 
 export const requestSearchBooks = async (search?: string, page?: string): Promise<ResponseBooks> => {
    const response = await client.get<ResponseBooks>(searchBooksEndpoints + '/' + search + '/' + page)
-   
+
    return response.data as ResponseBooks
 }
 

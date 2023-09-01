@@ -11,13 +11,13 @@ export function Pagination({ className = '', pageNumber, pagesCounter, baseUrl, 
       const prevPageNumber: number = pageNumber - 1
       const nextPageNumber: number = pageNumber + 1
       const pageAfterNext: number = pageNumber + 2
-      const scheme: number[] = [1, pageBeforePrev, prevPageNumber, pageNumber, nextPageNumber, pageAfterNext, pagesCounter]
-      const filteredScheme: number[] = scheme.filter(item => item > 0 && item <= pagesCounter)
-      const set: Set<number> = new Set(filteredScheme)
+      const paginationScheme: number[] = [1, pageBeforePrev, prevPageNumber, pageNumber, nextPageNumber, pageAfterNext, pagesCounter]
+      const filteredPaginationScheme: number[] = paginationScheme.filter(item => item > 0 && item <= pagesCounter)
+      const set: Set<number> = new Set(filteredPaginationScheme)
       const result: Array<number | string> = Array.from(set)
 
-      if (Number(result[0]) + 1 !== result[1]) result.splice(1, 0, '...')
-      if (Number(result.at(-2)) + 1 !== result.at(-1)) result.splice(result.length - 1, 0, '...')
+      if (Number(result[0]) + 1 !== Number(result[1])) result.splice(1, 0, '...')
+      if (Number(result.at(-2)) + 1 !== Number(result.at(-1))) result.splice(result.length - 1, 0, '...')
 
       return result
    }
@@ -74,4 +74,3 @@ export function Pagination({ className = '', pageNumber, pagesCounter, baseUrl, 
       )
    }
 }
-

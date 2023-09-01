@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { incrementToCart, decrementFromCart } from '../../redux/booksSlice'
+import { incrementToCart } from '../../redux/booksSlice'
 import { RootState, useAppDispatch } from '../../redux/store'
 import { Rating } from '../Rating/Rating'
 import { Button } from '../Button/Button'
@@ -8,7 +8,7 @@ import { Counter } from '../Counter/Counter'
 import { ResponseSingleBook } from '../../types/interfaces'
 import './bookInfo.scss'
 
-export function BookInfo({ className, data }: { className?: string, data: ResponseSingleBook }): JSX.Element {
+export function BookInfo({ className = '', data }: { className?: string, data: ResponseSingleBook }): JSX.Element {
    const { dataCart } = useSelector((state: RootState) => state.books)
    const dispatch = useAppDispatch()
 
@@ -16,14 +16,17 @@ export function BookInfo({ className, data }: { className?: string, data: Respon
       dispatch(incrementToCart(data))
    }
 
-   function handleClickDecrement(): void {
-      dispatch(decrementFromCart(data))
-   }
-
    function renderCartControl(): JSX.Element {
       return dataCart.some((book: ResponseSingleBook) => book.isbn13 === data.isbn13) ?
-         (<Counter className="mt-5" decrement={handleClickDecrement} increment={handleClickIncrement} data={data}/>) :
-         (<Button className="btn btn-primary mt-5" value="ADD TO CART" onClick={handleClickIncrement} />)
+         (<Counter
+            className="mt-5"
+            data={data}
+         />) :
+         (<Button
+            className="btn btn-primary mt-5"
+            value="ADD TO CART"
+            onClick={handleClickIncrement}
+         />)
    }
 
    return (
@@ -69,7 +72,14 @@ export function BookInfo({ className, data }: { className?: string, data: Respon
                   </details>
                </div>
                {renderCartControl()}
-               {data.pdf && <a href="" className="book-info__preview-link">Preview book</a>}
+               {data.pdf &&
+                  <a
+                     href={data.pdf['Free eBook'] || data.pdf['Chapter 2'] || '#'}
+                     className="book-info__preview-link"
+                     target="_blank"
+                  >
+                     Preview book
+                  </a>}
             </div>
          </div>
       </>
