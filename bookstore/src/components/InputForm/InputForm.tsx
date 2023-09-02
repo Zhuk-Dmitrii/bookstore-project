@@ -1,9 +1,6 @@
-import { PropsInputForm } from "../../types/interfaces"
+import { PropsInputForm } from '../../types/interfaces'
 
-export function InputForm ({className, children, id, type, placeholder, value, onchange }: PropsInputForm): JSX.Element {
-   function handleChangeInput (event: React.ChangeEvent<HTMLInputElement>): void {
-      onchange(event.target.value)
-   }
+export function InputForm ({className, children, id, type, placeholder, name, register }: PropsInputForm): JSX.Element {
 
    return (
       <div className={className}>
@@ -12,8 +9,7 @@ export function InputForm ({className, children, id, type, placeholder, value, o
             id={id}
             type={type}
             placeholder={placeholder}
-            value={value}
-            onChange={handleChangeInput}
+            {...register(name, { required: true })}
          />
       </div>
    )

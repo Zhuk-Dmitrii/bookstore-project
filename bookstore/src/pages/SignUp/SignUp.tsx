@@ -1,59 +1,29 @@
-import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { NavAuth } from '../../components/NavAuth/NavAuth'
 import { InputForm } from '../../components/InputForm/InputForm'
 import { Button } from '../../components/Button/Button'
+import { IFormInput } from '../../types/interfaces'
 import './signUp.scss'
 
 export function SignUp(): JSX.Element {
-   const [userName, setUserName] = useState<string>('')
-   const [email, setEmail] = useState<string>('')
-   const [password, setPassword] = useState<string>('')
-   const [confirmPassword, setConfirmPassword] = useState<string>('')
+   const { register, handleSubmit, reset } = useForm()
 
-   function handleChangeUserName(value: string): void {
-      setUserName(value)
-   }
-
-   function handleChangeEmail(value: string): void {
-      setEmail(value)
-   }
-
-   function handleChangePassword(value: string): void {
-      setPassword(value)
-   }
-
-   function handleChangeConfirmPassword(value: string): void {
-      setConfirmPassword(value)
-   }
-
-   function handleSubmit(event: React.FormEvent<HTMLFormElement>): void {
-      event.preventDefault()
-
-      const data = {
-         userName,
-         email,
-         password,
-         confirmPassword
-      }
+   function onSubmit(data: IFormInput): void {
       console.log(data)
-
-      setUserName('')
-      setEmail('')
-      setPassword('')
-      setConfirmPassword('')
+      reset()
    }
 
    return (
       <div className="sign-up">
          <NavAuth />
-         <form onSubmit={handleSubmit} className="sign-up__form">
+         <form onSubmit={handleSubmit(onSubmit)} className="sign-up__form">
             <InputForm
                className="sign-up__username"
                id="username"
                type="text"
                placeholder="Your name"
-               value={userName}
-               onchange={handleChangeUserName}
+               name="name"
+               register={register}
             >
                Name
             </InputForm>
@@ -63,8 +33,8 @@ export function SignUp(): JSX.Element {
                id="email"
                type="email"
                placeholder="Your email"
-               value={email}
-               onchange={handleChangeEmail}
+               name="email"
+               register={register}
             >
                Email
             </InputForm>
@@ -74,8 +44,8 @@ export function SignUp(): JSX.Element {
                id="password"
                type="password"
                placeholder="Your password"
-               value={password}
-               onchange={handleChangePassword}
+               name="password"
+               register={register}
             >
                Password
             </InputForm>
@@ -85,12 +55,12 @@ export function SignUp(): JSX.Element {
                id="confirm-password"
                type="password"
                placeholder="Confirm your password"
-               value={confirmPassword}
-               onchange={handleChangeConfirmPassword}
+               name="confirmPassword"
+               register={register}
             >
                Confirm password
             </InputForm>
-            <Button className="btn btn-dark rounded-0 w-100 p-2 mt-4 mb-3" value="SIGN UP" />
+            <Button className="btn btn-dark rounded-0 w-100 p-2 mt-4 mb-3" value="SIGN UP" type="submit" />
          </form>
       </div>
    )

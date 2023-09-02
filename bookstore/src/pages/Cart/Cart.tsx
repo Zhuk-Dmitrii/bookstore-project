@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import { RootState, useAppDispatch } from '../../redux/store'
 import { useNavigate } from 'react-router-dom'
-import { deleteFromCart, deleteAllFromCart } from '../../redux/booksSlice'
+import { deleteAllFromCart } from '../../redux/booksSlice'
 import { BookContainer } from '../../components/BookContainer/BookContainer'
 import { BookCard } from '../../components/BookCard/BookCard'
 import { Back } from '../../components/Back/Back'
@@ -23,11 +23,7 @@ export function Cart(): JSX.Element {
 
       return Number(cost.toFixed(2))
    }
-
-   function handleClickButtonClose(book: ResponseSingleBook): void {
-      dispatch(deleteFromCart(book))
-   }
-
+   
    function handleSubmit(event: React.FormEvent<HTMLFormElement>): void {
       event.preventDefault()
 
@@ -44,7 +40,7 @@ export function Cart(): JSX.Element {
          return result.map((book: ResponseSingleBook) => {
             return (
                <BookCard data={book} key={book.isbn13}>
-                  <Button className="button-delete btn btn-dark" value="X" onClick={() => handleClickButtonClose(book)} />
+                  <Button className="button-delete btn btn-dark" value="X" dataRole='delete' data={book} />
                   <Counter className="w-50 mb-3" data={book} />
                   <p className="text-center fs-4 fw-bold mt-1">${getCost(book)}</p>
                </BookCard>

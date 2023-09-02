@@ -1,3 +1,5 @@
+import { UseFormRegister } from "react-hook-form"
+
 export interface PropsChildren {
    children: React.ReactNode,
 }
@@ -13,8 +15,8 @@ export interface PropsInputForm {
    id?: string,
    type: string,
    placeholder?: string,
-   value: string,
-   onchange: (value: string) => void
+   name: keyof IFormInput,
+   register: UseFormRegister<IFormInput>,
 }
 
 export interface PropsFavoriteBtn {
@@ -32,7 +34,8 @@ export interface PropsButton {
    className?: string,
    value: string,
    type?: 'button' | 'submit' | 'reset',
-   onClick?: React.MouseEventHandler<HTMLButtonElement>
+   dataRole?: string,
+   data?: ResponseSingleBook
 }
 
 export interface PropsCounter {
@@ -111,4 +114,11 @@ export interface SearchParams {
    searchValue?: string,
    pageNumber?: string,
    [key: string]: string | undefined
+}
+
+export interface IFormInput {
+   name?: string,
+   email?: string,
+   password?: string,
+   confirmPassword?: string,
 }

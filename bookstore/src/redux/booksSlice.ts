@@ -31,6 +31,7 @@ export const booksSlice = createSlice({
       error: null,
    } as InitialStateBooks,
    reducers: {
+      // ______________________________Favorites____________________________
       addBookFavorites: (state, action) => {
          state.dataFavorites.push(action.payload)
          setDataInLocalStorage('favorites', state.dataFavorites)
@@ -40,6 +41,7 @@ export const booksSlice = createSlice({
          state.dataFavorites.splice(indexBook, 1)
          setDataInLocalStorage('favorites', state.dataFavorites)
       },
+      // ______________________________Cart_________________________________
       incrementToCart: (state, action) => {
          state.dataCart.push(action.payload)
          setDataInLocalStorage('cart', state.dataCart)
@@ -59,7 +61,7 @@ export const booksSlice = createSlice({
       }
    },
    extraReducers: builder => {
-      // ______________________________New books_____________________________
+      // ______________________________New books______________________________
       builder.addCase(fetchNewBooks.pending, (state) => {
          state.loading = true
       })

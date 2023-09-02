@@ -1,11 +1,8 @@
-import { NavLink, useNavigate } from 'react-router-dom'
-import { Button } from '../Button/Button'
+import { NavLink } from 'react-router-dom'
 import { PaginationBooks } from '../../types/interfaces'
 import './pagination.scss'
 
 export function Pagination({ className = '', pageNumber, pagesCounter, baseUrl, routeParameter = '' }: PaginationBooks): JSX.Element | undefined {
-   const navigate = useNavigate()
-
    function buildPaginationScheme() {
       const pageBeforePrev: number = pageNumber - 2
       const prevPageNumber: number = pageNumber - 1
@@ -44,32 +41,24 @@ export function Pagination({ className = '', pageNumber, pagesCounter, baseUrl, 
       })
    }
 
-   function handleClickPrevButton() {
-      navigate(`${baseUrl}${routeParameter}${pageNumber - 1}`)
-   }
-
-   function handleClickNextButton() {
-      navigate(`${baseUrl}${routeParameter}${pageNumber + 1}`)
-   }
-
    if (pagesCounter > 1) {
       return (
          <nav className={`pagination ${className}`}>
-            <Button
-               className={`btn btn-primary px-3 mx-3 ${pageNumber == 1 ? 'disabled' : ''}`}
-               value='Prev'
-               type='button'
-               onClick={handleClickPrevButton}
-            />
             <ul className="pagination flex-wrap">
+               <li className="btn-control page-item">
+                  <NavLink to={`${baseUrl}${routeParameter}${pageNumber - 1}`} className={pageNumber == 1 ? 'page-link disabled' : 'page-link'}>
+                     Prev
+                  </NavLink>
+               </li>
+
                {renderPagination()}
+
+               <li className="btn-control page-item">
+                  <NavLink to={`${baseUrl}${routeParameter}${pageNumber + 1}`} className={pageNumber == pagesCounter ? 'page-link disabled' : 'page-link'}>
+                     Next
+                  </NavLink>
+               </li>
             </ul>
-            <Button
-               className={`btn btn-primary px-3 mx-3 ${pageNumber == pagesCounter ? 'disabled' : ''}`}
-               value='Next'
-               type='button'
-               onClick={handleClickNextButton}
-            />
          </nav>
       )
    }

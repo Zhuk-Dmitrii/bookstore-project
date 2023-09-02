@@ -1,11 +1,12 @@
 import { PropsButton } from '../../types/interfaces'
+import { onClickButton } from '../../helpers/onClickButton'
 
-export function Button({ className = '', value, type = 'button', onClick }: PropsButton): JSX.Element {
+export function Button({ className = '', value, type = 'button', dataRole = '', data }: PropsButton): JSX.Element {
    function handleClickButton(event: React.MouseEvent<HTMLButtonElement>): void {
-      onClick && onClick(event)
+      onClickButton(event, data)
    }
 
    return (
-      <button className={className} onClick={handleClickButton} type={type}>{value}</button>
+      <button className={className} onClick={handleClickButton} type={type} data-role={dataRole}>{value}</button>
    )
 }

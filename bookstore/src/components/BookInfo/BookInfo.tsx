@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux'
-import { incrementToCart } from '../../redux/booksSlice'
-import { RootState, useAppDispatch } from '../../redux/store'
+import { RootState } from '../../redux/store'
 import { Rating } from '../Rating/Rating'
 import { Button } from '../Button/Button'
 import { FavoritesControl } from '../FavoritesControl/FavoritesControl'
@@ -10,11 +9,6 @@ import './bookInfo.scss'
 
 export function BookInfo({ className = '', data }: { className?: string, data: ResponseSingleBook }): JSX.Element {
    const { dataCart } = useSelector((state: RootState) => state.books)
-   const dispatch = useAppDispatch()
-
-   function handleClickIncrement(): void {
-      dispatch(incrementToCart(data))
-   }
 
    function renderCartControl(): JSX.Element {
       return dataCart.some((book: ResponseSingleBook) => book.isbn13 === data.isbn13) ?
@@ -25,7 +19,8 @@ export function BookInfo({ className = '', data }: { className?: string, data: R
          (<Button
             className="btn btn-primary mt-5"
             value="ADD TO CART"
-            onClick={handleClickIncrement}
+            dataRole='increment'
+            data={data}
          />)
    }
 
