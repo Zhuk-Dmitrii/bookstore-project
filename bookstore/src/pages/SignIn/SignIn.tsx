@@ -6,7 +6,7 @@ import { IFormInput } from '../../types/interfaces'
 import './signIn.scss'
 
 export function SignIn(): JSX.Element {
-   const { register, handleSubmit, reset } = useForm()
+   const { register, handleSubmit, reset } = useForm<IFormInput>()
 
    function onSubmit(data: IFormInput): void {
       console.log(data)
