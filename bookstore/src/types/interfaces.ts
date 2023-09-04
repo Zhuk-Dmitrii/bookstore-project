@@ -117,8 +117,9 @@ export interface SearchParams {
 }
 
 export interface IFormInput {
-   name?: string,
-   email?: string,
-   password?: string,
-   confirmPassword?: string,
+   name: string,
+   email: string,
+   password: string,
+   confirmPassword: string,
+   searchValue: string,
 }

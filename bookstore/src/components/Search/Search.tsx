@@ -1,31 +1,28 @@
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
+import { IFormInput } from '../../types/interfaces'
 import './search.scss'
 
 export function Search(): JSX.Element {
-   const [searchValue, setSearchValue] = useState<string>('')
    const navigate = useNavigate()
+   const { register, handleSubmit, getValues, reset } = useForm<IFormInput>()
 
-   function handleInputSearch(event: React.ChangeEvent<HTMLInputElement>) {
-      setSearchValue(event.target.value)
-   }
-
-   function handleSubmitSearch(event: React.FormEvent<HTMLFormElement>) {
-      event.preventDefault()
+   function onSubmit({ searchValue }: { searchValue: string }): void {
       if (searchValue.trim() != '') {
-         navigate(`/books/search/${searchValue}/1`)
+         const encodedSearchValue = encodeURIComponent(searchValue)
+         navigate(`/books/search/${encodedSearchValue}/1`)
       }
-      setSearchValue('')
+
+      reset()
    }
 
    return (
-      <form className="d-flex w-50" onSubmit={handleSubmitSearch}>
+      <form className="d-flex w-50" onSubmit={handleSubmit(onSubmit)}>
          <input
-            className={`${searchValue ? 'none-bg-img' : ''} search-input form-control me-2`}
+            className={`${getValues('searchValue') ? 'none-bg-img' : ''} search-input form-control me-2`}
             type="search"
             placeholder="Search"
-            value={searchValue}
-            onChange={handleInputSearch}
+            {...register('searchValue')}
          />
       </form>
    )
