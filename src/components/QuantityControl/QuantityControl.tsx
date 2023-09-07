@@ -2,10 +2,10 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/store'
 import { Button } from '../Button/Button'
 import { Quantity } from '../Quantity/Quantity'
-import { PropsCounter, ResponseSingleBook } from '../../types/interfaces'
+import { PropsQuantityControl, ResponseSingleBook } from '../../types/interfaces'
 import './quantityControl.scss'
 
-export function QuantityControl({className = '', data}: PropsCounter): JSX.Element {
+export function QuantityControl({className = '', data}: PropsQuantityControl): JSX.Element {
    const { dataCart } = useSelector((state: RootState) => state.books)
 
    function getQuantity(): number {

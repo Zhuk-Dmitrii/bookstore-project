@@ -38,12 +38,12 @@ export interface PropsButton {
    data?: ResponseSingleBook
 }
 
-export interface PropsCounter {
+export interface PropsQuantityControl {
    className?: string,
    data: ResponseSingleBook,
 }
 
-export interface PropsCounterValue {
+export interface PropsQuantity {
    className?: string,
    value: string | number,
 }
