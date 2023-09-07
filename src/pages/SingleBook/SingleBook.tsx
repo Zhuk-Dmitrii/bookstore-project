@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { getBook } from '../../redux/bookSlice'
 import { useAppDispatch, RootState } from '../../redux/store'
 import { Spinner } from '../../components/Spinner/Spinner'
-import { Back } from '../../components/Back/Back'
+import { PreviousPageLink } from '../../components/PreviousPageLink/PreviousPageLink'
 import { Title } from '../../components/Title/Title'
 import { BookInfo } from '../../components/BookInfo/BookInfo'
 import { Tabs } from '../../components/Tabs/Tabs'
@@ -37,7 +37,7 @@ export function SingleBook(): JSX.Element {
 
    return (
       <>
-         <Back className="mt-5" />
+         <PreviousPageLink className="mt-5" />
          <Title className="mt-3">
             {data.title}
          </Title>

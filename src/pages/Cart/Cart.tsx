@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { deleteAllFromCart } from '../../redux/booksSlice'
 import { BookContainer } from '../../components/BookContainer/BookContainer'
 import { BookCard } from '../../components/BookCard/BookCard'
-import { Back } from '../../components/Back/Back'
+import { PreviousPageLink } from '../../components/PreviousPageLink/PreviousPageLink'
 import { Title } from '../../components/Title/Title'
 import { Button } from '../../components/Button/Button'
 import { Counter } from '../../components/Counter/Counter'
@@ -51,7 +51,7 @@ export function Cart(): JSX.Element {
 
    return (
       <>
-         <Back className="mt-5" />
+         <PreviousPageLink className="mt-5" />
 
          <Title className="text-uppercase fw-bold mt-4 mb-5">
             Your cart

@@ -5,7 +5,7 @@ import './search.scss'
 
 export function Search(): JSX.Element {
    const navigate = useNavigate()
-   const { register, handleSubmit, getValues, reset } = useForm<IFormInput>()
+   const { register, handleSubmit, watch, reset } = useForm<IFormInput>()
 
    function onSubmit({ searchValue }: { searchValue: string }): void {
       if (searchValue.trim() != '') {
@@ -19,7 +19,7 @@ export function Search(): JSX.Element {
    return (
       <form className="d-flex w-50" onSubmit={handleSubmit(onSubmit)}>
          <input
-            className={`${getValues('searchValue') ? 'none-bg-img' : ''} search-input form-control me-2`}
+            className={`${watch('searchValue') ? 'none-bg-img' : ''} search-input form-control me-2`}
             type="search"
             placeholder="Search"
             {...register('searchValue')}

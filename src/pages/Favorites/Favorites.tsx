@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/store'
 import { BookContainer } from '../../components/BookContainer/BookContainer'
 import { BookCard } from '../../components/BookCard/BookCard'
-import { Back } from '../../components/Back/Back'
+import { PreviousPageLink } from '../../components/PreviousPageLink/PreviousPageLink'
 import { Title } from '../../components/Title/Title'
 import { FavoritesControl } from '../../components/FavoritesControl/FavoritesControl'
 import { ResponseSingleBook } from '../../types/interfaces'
@@ -25,7 +25,7 @@ export function Favorites(): JSX.Element {
 
    return (
       <>
-         <Back className="mt-5" />
+         <PreviousPageLink className="mt-5" />
          <Title className="text-uppercase fw-bold mt-4 mb-5">
             Favorites
          </Title>

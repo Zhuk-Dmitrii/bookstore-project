@@ -1,7 +1,7 @@
 import back from '../../images/back.png'
-import './back.scss'
+import './PreviousPageLink.scss'
 
-export function Back ({ className = '' }: { className?: string }): JSX.Element {
+export function PreviousPageLink ({ className = '' }: { className?: string }): JSX.Element {
    function handleClickImage (): void {
       window.history.back()
    }
