@@ -3,7 +3,7 @@ import { RootState } from '../../redux/store'
 import { Rating } from '../Rating/Rating'
 import { Button } from '../Button/Button'
 import { FavoritesControl } from '../FavoritesControl/FavoritesControl'
-import { Counter } from '../Counter/Counter'
+import { QuantityControl } from '../QuantityControl/QuantityControl'
 import { ResponseSingleBook } from '../../types/interfaces'
 import './bookInfo.scss'
 
@@ -12,7 +12,7 @@ export function BookInfo({ className = '', data }: { className?: string, data: R
 
    function renderCartControl(): JSX.Element {
       return dataCart.some((book: ResponseSingleBook) => book.isbn13 === data.isbn13) ?
-         (<Counter
+         (<QuantityControl
             className="mt-5"
             data={data}
          />) :

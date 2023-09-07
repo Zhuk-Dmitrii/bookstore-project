@@ -7,7 +7,7 @@ import { BookCard } from '../../components/BookCard/BookCard'
 import { PreviousPageLink } from '../../components/PreviousPageLink/PreviousPageLink'
 import { Title } from '../../components/Title/Title'
 import { Button } from '../../components/Button/Button'
-import { Counter } from '../../components/Counter/Counter'
+import { QuantityControl } from '../../components/QuantityControl/QuantityControl'
 import { TotalCost } from '../../components/TotalCost/TotalCost'
 import { ResponseSingleBook } from '../../types/interfaces'
 import './cart.scss'
@@ -41,7 +41,7 @@ export function Cart(): JSX.Element {
             return (
                <BookCard data={book} key={book.isbn13}>
                   <Button className="button-delete btn btn-dark" value="X" dataRole='delete' data={book} />
-                  <Counter className="w-50 mb-3" data={book} />
+                  <QuantityControl className="w-50 mb-3" data={book} />
                   <p className="text-center fs-4 fw-bold mt-1">${getCost(book)}</p>
                </BookCard>
             )

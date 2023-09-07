@@ -1,17 +1,17 @@
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { RootState } from '../../redux/store'
-import { CounterValue } from '../CounterValue/CounterValue'
+import { Quantity } from '../Quantity/Quantity'
 import cartThumbnail from '../../images/cart-thumbnail.png'
 import './cartThumbnail.scss'
 
 export function CartThumbnail(): JSX.Element {
    const { dataCart } = useSelector((state: RootState) => state.books)
 
-   function renderCounterValue(): JSX.Element | undefined {
+   function renderQuantity(): JSX.Element | undefined {
       if (dataCart && dataCart.length > 0) {
          return (
-            <CounterValue className="cart-thumbnail__counter-value" value={dataCart.length} />
+            <Quantity className="cart-thumbnail__quantity" value={dataCart.length} />
          )
       }
    }
@@ -19,7 +19,7 @@ export function CartThumbnail(): JSX.Element {
    return (
       <Link to="/cart" className="cart-thumbnail">
          <img src={cartThumbnail} alt="упс" />
-         {renderCounterValue()}
+         {renderQuantity()}
       </Link>
    )
 }
