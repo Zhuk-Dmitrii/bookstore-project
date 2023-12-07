@@ -1,7 +1,7 @@
 {
   "name": "bookstore",
   "private": true,
-  "homepage": "https//Zhuk-Dmitrii.github.io/bookstore-project",
+  "homepage": "https://Zhuk-Dmitrii.github.io/bookstore-project",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
