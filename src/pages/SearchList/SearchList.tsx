@@ -61,7 +61,7 @@ export function SearchList(): JSX.Element {
             className="mt-5 mb-5"
             pageNumber={Number(pageNumber)}
             pagesCounter={pagesCounter}
-            baseUrl="/books/search/"
+            baseUrl="/bookstore-project/books/search/"
             routeParameter={searchValue + '/'}
          />
       </>

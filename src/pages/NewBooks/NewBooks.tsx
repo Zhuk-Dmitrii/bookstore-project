@@ -57,7 +57,7 @@ export function NewBooks(): JSX.Element {
             className="mt-5 mb-5"
             pageNumber={Number(pageNumber)}
             pagesCounter={pagesCounter}
-            baseUrl="/new-books/page/"
+            baseUrl="/bookstore-project/new-books/page/"
          />
 
          <Subscription className="mt-2 mb-5" />

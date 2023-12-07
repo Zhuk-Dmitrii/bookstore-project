@@ -10,7 +10,7 @@ export function Search(): JSX.Element {
    function onSubmit({ searchValue }: { searchValue: string }): void {
       if (searchValue.trim() != '') {
          const encodedSearchValue = encodeURIComponent(searchValue)
-         navigate(`/books/search/${encodedSearchValue}/1`)
+         navigate(`/bookstore-project/books/search/${encodedSearchValue}/1`)
       }
 
       reset()

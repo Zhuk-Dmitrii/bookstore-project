@@ -3,7 +3,7 @@ import userThumbnail from '../../images/user-thumbnail.png'
 
 export function UserThumbnail(): JSX.Element {
    return (
-      <Link to="/auth" className="user-thumbnail">
+      <Link to="/bookstore-project/auth" className="user-thumbnail">
          <img src={userThumbnail} />
       </Link>
    )

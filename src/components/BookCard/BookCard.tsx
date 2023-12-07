@@ -5,7 +5,7 @@ import './bookCard.scss'
 export function BookCard({ children, data, className = '' }: PropsBookCard): JSX.Element {
    return (
       <div className={`book-card card ${className}`}>
-         <Link to={`/single-book/${data.isbn13}`} className="text-decoration-none">
+         <Link to={`/bookstore-project/single-book/${data.isbn13}`} className="text-decoration-none">
             <img src={data.image} className="book-card__image w-100" />
          </Link>
          <div className="card-body py-0">

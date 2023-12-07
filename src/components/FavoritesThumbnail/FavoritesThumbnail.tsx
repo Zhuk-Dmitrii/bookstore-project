@@ -17,7 +17,7 @@ export function FavoritesThumbnail(): JSX.Element {
    }
 
    return (
-      <Link to="/favorites" className="favorites-thumbnail">
+      <Link to="/bookstore-project/favorites" className="favorites-thumbnail">
          <img src={favoritesThumbnail} alt="упс" />
          {renderQuantity()}
       </Link>

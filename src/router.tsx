@@ -14,43 +14,43 @@ export const router = createBrowserRouter([
       element: <Layout />,
       children: [
          {
-            path: '/',
-            element: <Navigate to='/new-books/page/1' replace/>
+            path: '/bookstore-project',
+            element: <Navigate to='/bookstore-project/new-books/page/1' replace/>
          },
          {
-            path: '/new-books/page/:pageNumber',
+            path: '/bookstore-project/new-books/page/:pageNumber',
             element: <NewBooks />
          },
          {
-            path: '/books/search/:searchValue/:pageNumber',
+            path: '/bookstore-project/books/search/:searchValue/:pageNumber',
             element: <SearchList />
          },
          {
-            path: '/single-book/:isbn13',
+            path: '/bookstore-project/single-book/:isbn13',
             element: <SingleBook />
          },
          {
-            path: '/favorites',
+            path: '/bookstore-project/favorites',
             element: <Favorites />
          },
          {
-            path: '/cart',
+            path: '/bookstore-project/cart',
             element: <Cart />
          },
          {
-            path: '/auth',
+            path: '/bookstore-project/auth',
             element: <Auth />,
             children: [
                {
-                  path: '/auth',
-                  element: <Navigate to='/auth/sign-in' replace/>
+                  path: '/bookstore-project/auth',
+                  element: <Navigate to='/bookstore-project/auth/sign-in' replace/>
                },
                {
-                  path: '/auth/sign-in',
+                  path: '/bookstore-project/auth/sign-in',
                   element: <SignIn />
                },
                {
-                  path: '/auth/sign-up',
+                  path: '/bookstore-project/auth/sign-up',
                   element: <SignUp />
                }
             ]

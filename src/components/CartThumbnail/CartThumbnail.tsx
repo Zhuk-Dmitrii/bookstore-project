@@ -17,7 +17,7 @@ export function CartThumbnail(): JSX.Element {
    }
 
    return (
-      <Link to="/cart" className="cart-thumbnail">
+      <Link to="/bookstore-project/cart" className="cart-thumbnail">
          <img src={cartThumbnail} alt="упс" />
          {renderQuantity()}
       </Link>
