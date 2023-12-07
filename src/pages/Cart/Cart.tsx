@@ -29,7 +29,7 @@ export function Cart(): JSX.Element {
 
       console.log(dataCart)
       dispatch(deleteAllFromCart())
-      navigate('/')
+      navigate('/bookstore-project')
    }
 
    function renderCart() {
